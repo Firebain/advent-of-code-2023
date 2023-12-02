@@ -27,16 +27,19 @@ export const second = (input: string) => {
 };
 `;
 
-await Bun.write(`./src/days/day${paddedDay}/day01.ts`, sourceTemplate);
+await Bun.write(
+  `./src/days/day${paddedDay}/day${paddedDay}.ts`,
+  sourceTemplate
+);
 
 const testTemplate = `import { expect, test, describe } from "bun:test";
-import { first, second } from "./day01.ts";
+import { first, second } from "./day${paddedDay}.ts";
 
-const firstSample = await Bun.file("./src/days/day01/first-sample.txt").text();
-const secondSample = await Bun.file("./src/days/day01/first-sample.txt").text();
-const input = await Bun.file("./src/days/day01/input.txt").text();
+const firstSample = await Bun.file("./src/days/day${paddedDay}/first-sample.txt").text();
+const secondSample = await Bun.file("./src/days/day${paddedDay}/first-sample.txt").text();
+const input = await Bun.file("./src/days/day${paddedDay}/input.txt").text();
 
-describe("day 1", () => {
+describe("day ${day}", () => {
 //  test("first part sample", () => expect(first(firstSample)).toBe(1));
 
 //  test("first part input", () => expect(first(input)).toBe(1));
@@ -47,7 +50,10 @@ describe("day 1", () => {
 });
 `;
 
-await Bun.write(`./src/days/day${paddedDay}/day01.test.ts`, testTemplate);
+await Bun.write(
+  `./src/days/day${paddedDay}/day${paddedDay}.test.ts`,
+  testTemplate
+);
 
 await Bun.write(`./src/days/day${paddedDay}/input.txt`, "");
 await Bun.write(`./src/days/day${paddedDay}/first-sample.txt`, "");
