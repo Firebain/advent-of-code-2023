@@ -1,8 +1,5 @@
 import { readLines } from "../../utils/file";
-
-const isDigit = (char: string) => {
-  return char >= "0" && char <= "9";
-};
+import { isDigit } from "../../utils/parsing";
 
 const spelledDigits = [
   "one",
