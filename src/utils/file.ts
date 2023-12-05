@@ -1,3 +1,7 @@
 export const readLines = (input: string) => {
-  return input.split("\n").filter((line) => line !== "");
+  return input.trim().split("\n");
+};
+
+export const readTextChunks = (input: string, sep: string) => {
+  return input.trim().split(sep);
 };

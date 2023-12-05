@@ -1,28 +1,5 @@
 import { readLines } from "../../utils/file";
-import { isDigit } from "../../utils/parsing";
-
-const extractNumbers = (line: string) => {
-  const numbers = [];
-  let num = "";
-
-  for (const char of line) {
-    if (isDigit(char)) {
-      num += char;
-    } else {
-      if (num !== "") {
-        numbers.push(Number(num));
-        num = "";
-      }
-    }
-  }
-
-  if (num !== "") {
-    numbers.push(Number(num));
-    num = "";
-  }
-
-  return numbers;
-};
+import { getNumbersFromStr } from "../../utils/parsing";
 
 export const first = (input: string) => {
   const lines = readLines(input);
@@ -33,8 +10,8 @@ export const first = (input: string) => {
 
     const [winningNumbersStr, numbersStr] = gameStr.split(" | ");
 
-    const winningNumbers = extractNumbers(winningNumbersStr);
-    const numbers = extractNumbers(numbersStr);
+    const winningNumbers = getNumbersFromStr(winningNumbersStr);
+    const numbers = getNumbersFromStr(numbersStr);
 
     let points = 0;
     for (const num of numbers) {
@@ -72,8 +49,8 @@ export const second = (input: string) => {
 
     const [winningNumbersStr, numbersStr] = gameStr.split(" | ");
 
-    const winningNumbers = extractNumbers(winningNumbersStr);
-    const numbers = extractNumbers(numbersStr);
+    const winningNumbers = getNumbersFromStr(winningNumbersStr);
+    const numbers = getNumbersFromStr(numbersStr);
 
     cards[card] = { count: 1, winningNumbers, numbers };
   }
