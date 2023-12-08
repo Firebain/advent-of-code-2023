@@ -12,5 +12,5 @@ describe("day 7", () => {
 
   test("second part sample", () => expect(second(secondSample)).toBe(5905));
 
-  //  test("second part input", () => expect(second(input)).toBe(2));
+  test("second part input", () => expect(second(input)).toBe(250384185));
 });
