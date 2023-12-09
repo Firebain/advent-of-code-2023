@@ -17,5 +17,6 @@ describe("parsing", () => {
     expect(getNumbersFromStr("1 2 3")).toEqual([1, 2, 3]);
     expect(getNumbersFromStr("13 2 43")).toEqual([13, 2, 43]);
     expect(getNumbersFromStr("32  2 63")).toEqual([32, 2, 63]);
+    expect(getNumbersFromStr("55 -43 -22")).toEqual([55, -43, -22]);
   });
 });

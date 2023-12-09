@@ -7,6 +7,12 @@ export const getNumbersFromStr = (str: string): number[] => {
   let num = "";
 
   for (const char of str) {
+    if (char === "-" && num === "") {
+      num += char;
+
+      continue;
+    }
+
     if (isDigit(char)) {
       num += char;
 
