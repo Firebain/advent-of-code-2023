@@ -2,7 +2,9 @@ import { expect, test, describe } from "bun:test";
 import { first, second } from "./day04.ts";
 
 const firstSample = await Bun.file("./src/days/day04/first-sample.txt").text();
-const secondSample = await Bun.file("./src/days/day04/first-sample.txt").text();
+const secondSample = await Bun.file(
+  "./src/days/day04/second-sample.txt"
+).text();
 const input = await Bun.file("./src/days/day04/input.txt").text();
 
 describe("day 4", () => {

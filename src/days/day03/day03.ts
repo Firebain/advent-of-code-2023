@@ -1,4 +1,5 @@
 import { readLines } from "../../utils/file";
+import { getAllNeighbours } from "../../utils/matrix";
 import { isDigit } from "../../utils/parsing";
 
 const matrixNeighbours = [
@@ -25,27 +26,6 @@ const isNeighbour = (
   return false;
 };
 
-const returnNeighbours = (matrix: string[][], col: number, row: number) => {
-  const neighbours: Array<{ value: string; pos: [number, number] }> = [];
-
-  for (const [yd, xd] of matrixNeighbours) {
-    if (col + yd < 0 || col + yd > matrix.length - 1) {
-      continue;
-    }
-
-    if (row + xd < 0 || row + xd > matrix[col + yd].length - 1) {
-      continue;
-    }
-
-    neighbours.push({
-      value: matrix[col + yd][row + xd],
-      pos: [col + yd, row + xd],
-    });
-  }
-
-  return neighbours;
-};
-
 const checkNumCollides = (
   matrix: string[][],
   col: number,
@@ -53,7 +33,7 @@ const checkNumCollides = (
   num: string
 ): boolean => {
   for (let x = row; x > row - num.length; x--) {
-    const neighbours = returnNeighbours(matrix, col, x);
+    const neighbours = getAllNeighbours([col, x], matrix);
 
     for (const el of neighbours) {
       if (isDigit(el.value)) {
@@ -95,7 +75,7 @@ const checkGearNeighbours = (
   col: number,
   row: number
 ): { valid: boolean; first: number; second: number } => {
-  const neighbours = returnNeighbours(matrix, col, row);
+  const neighbours = getAllNeighbours([col, row], matrix);
 
   const allNumbers: Array<[number, number]> = [];
   const uniqueNumbers: Array<[number, number]> = [];
