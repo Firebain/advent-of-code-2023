@@ -36,7 +36,7 @@ const testTemplate = `import { expect, test, describe } from "bun:test";
 import { first, second } from "./day${paddedDay}.ts";
 
 const firstSample = await Bun.file("./src/days/day${paddedDay}/first-sample.txt").text();
-const secondSample = await Bun.file("./src/days/day${paddedDay}/first-sample.txt").text();
+const secondSample = await Bun.file("./src/days/day${paddedDay}/second-sample.txt").text();
 const input = await Bun.file("./src/days/day${paddedDay}/input.txt").text();
 
 describe("day ${day}", () => {
